@@ -10,8 +10,9 @@ const dotenv = require('dotenv').config({
 
 const app = express();
 
-app.use(cors());
-app.options('*', cors());
+app.use(cors({
+	origin: '*'
+}));
 
 const authController = require(Path.join(__dirname, 'controllers/authController'));
 const userController = require(Path.join(__dirname, 'controllers/userController'));

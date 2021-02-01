@@ -10,6 +10,9 @@ const dotenv = require('dotenv').config({
 
 const app = express();
 
+app.use(cors());
+app.options('*', cors());
+
 const authController = require(Path.join(__dirname, 'controllers/authController'));
 const userController = require(Path.join(__dirname, 'controllers/userController'));
 
@@ -19,8 +22,6 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
 	extended: true
 }));
-
-app.use(cors());
 
 app.get('/', (req, res) => {
 	res.send('Welcome to TribeHired Test API.');
